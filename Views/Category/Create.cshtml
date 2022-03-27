@@ -1,0 +1,38 @@
+﻿@*The controller isnot passing a model*@
+@model Category
+
+@*"Tag Helpers" start with "asp-" and allow things like binding*@
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create Category</h2>
+            <hr />
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="mb-3">
+            @* when you type a Tag Helper Visual Studio will display options from the model provide above*@
+            <label asp-for="Name">Name</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            @* when you type a Tag Helper Visual Studio will display options from the model provide above*@
+            <label asp-for="DisplayOrder"></label>
+            <input asp-for="DisplayOrder" class="form-control" />
+            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a asp-controller="Category" asp-action="index" class="btn btn-secondary" style="width:150px">
+            Back to List
+        </a>
+    </div>
+</form>
+
+@* Adding validation scripts so validation can be client side *@
+@section scripts{
+@{
+    <partial name="_ValidationScriptsPartial" />
+}
+}
+
+
